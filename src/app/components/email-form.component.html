@@ -1,0 +1,58 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Email Form</h1>
+    <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+
+      <div class="form-group">
+        <label for="from">From</label>
+        <input type="text" class="form-control" [(ngModel)]="model.from" name="from" required>
+      </div>
+      <div class="form-group">
+        <label for="to">To</label>
+        <input type="text" class="form-control" [(ngModel)]="model.to" name="to" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class="form-control" [(ngModel)]="model.subject" name="subject" required>
+      </div>
+      <div class="form-group">
+        <label for="cc">CC</label>
+        <input type="text" class="form-control" [(ngModel)]="model.cc" name="cc">
+      </div>
+      <div class="form-group">
+        <label for="bcc">BCC</label>
+        <input type="text" class="form-control" [(ngModel)]="model.bcc" name="bcc">
+      </div>
+      <div class="form-group">
+        <label for="text">Body</label>
+        <textarea type="text" class="form-control" [(ngModel)]="model.text" name="text"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid">Send</button>
+      <button type="button" class="btn btn-default" (click)="emailForm.reset()">Clear</button>
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <h2>Status: {{status}}</h2>
+    <div class="row">
+      <div class="col-xs-3">From: {{ model.from }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">To: {{ model.to }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Subject: {{ model.subject }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">CC: {{ model.cc }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">BCC: {{ model.bcc }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Text: {{ model.text }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false;emailForm.reset()">Send a new email</button>
+  </div>
+</div>
