@@ -1,0 +1,30 @@
+.alert, .alert-danger {
+  color: red;
+  font-weight: bold;
+}
+
+.container {
+  width: 100%;
+}
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+dt.label {
+  width: 5%;
+  float: left;
+  padding-bottom: 10px;
+  text-align: right;
+}
+dd.item {
+  width: 90%;
+  float: left;
+  padding-bottom: 10px;
+  margin-left: 20px;
+}
+div.form-group {
+  width: 100%;
+}
+

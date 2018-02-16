@@ -8,15 +8,12 @@ import {Email} from './models/email';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // email: Email;
-  // errorMessage: String;
 
   constructor() {
 
   }
 
   public ngOnInit(): void {
-    // this.email = new Email();
   }
 }
 

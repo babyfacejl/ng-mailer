@@ -4,55 +4,79 @@
     <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
 
       <div class="form-group">
-        <label for="from">From</label>
-        <input type="text" class="form-control" [(ngModel)]="model.from" name="from" required>
+        <dl>
+          <dt class="label"><label for="from">From</label></dt>
+          <dd class="item">
+            <input type="text" size="50" class="form-control" [(ngModel)]="model.from" name="from" required #from="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            <div [hidden]="from.valid || from.pristine" class="alert alert-danger">
+              <div *ngIf="from.errors && from.errors.required">
+                From is required
+              </div>
+              <div *ngIf="from.errors && from.errors.pattern">
+                Email is invalid
+              </div>
+            </div>
+          </dd>
+          <dt class="label"><label for="to">To</label></dt>
+          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.to" name="to" required #to="ngModel" emails>
+            <div [hidden]="to.valid || to.pristine" class="alert alert-danger">
+              <div *ngIf="to.errors && to.errors.required">
+                To is required
+              </div>
+              <div *ngIf="!to.valid">
+                Email is invalid
+              </div>
+            </div>
+          </dd>
+          <dt class="label"><label for="subject">Subject</label></dt>
+          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.subject" name="subject" required #subject="ngModel">
+            <div [hidden]="subject.valid || subject.pristine" class="alert alert-danger">Subject is required</div></dd>
+          <dt class="label"><label for="cc">cc</label></dt>
+          <dd class="item">
+            <input type="text" size="50" class="form-control" [(ngModel)]="model.cc" name="cc" #cc="ngModel" emails="cc">
+            <div [hidden]="cc.valid || cc.pristine" class="alert alert-danger">
+              <div *ngIf="!cc.valid">
+                Email is invalid
+              </div>
+            </div>
+          </dd>
+          <dt class="label"><label for="bcc">bcc</label></dt>
+          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.bcc" name="bcc" #bcc="ngModel" emails="bcc">
+            <div [hidden]="bcc.valid || bcc.pristine" class="alert alert-danger">
+              <div *ngIf="!bcc.valid">
+                Email is invalid
+              </div>
+            </div>
+          </dd>
+          <dt class="label"><label for="text">Body</label></dt>
+          <dd class="item"><textarea rows="15" cols="91" type="text" size="100" class="form-control" [(ngModel)]="model.text" name="text" required #text="ngModel"></textarea>
+            <div [hidden]="text.valid || text.pristine" class="alert alert-danger">Body is required</div></dd>
+          <dt class="label"></dt>
+          <dd class="item"><button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid ||!cc.valid || btnClick">Send</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-default" (click)="emailForm.reset()">Clear</button></dd>
+        </dl>
       </div>
-      <div class="form-group">
-        <label for="to">To</label>
-        <input type="text" class="form-control" [(ngModel)]="model.to" name="to" required>
-      </div>
-      <div class="form-group">
-        <label for="subject">Subject</label>
-        <input type="text" class="form-control" [(ngModel)]="model.subject" name="subject" required>
-      </div>
-      <div class="form-group">
-        <label for="cc">CC</label>
-        <input type="text" class="form-control" [(ngModel)]="model.cc" name="cc">
-      </div>
-      <div class="form-group">
-        <label for="bcc">BCC</label>
-        <input type="text" class="form-control" [(ngModel)]="model.bcc" name="bcc">
-      </div>
-      <div class="form-group">
-        <label for="text">Body</label>
-        <textarea type="text" class="form-control" [(ngModel)]="model.text" name="text"></textarea>
-      </div>
-
-      <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid">Send</button>
-      <button type="button" class="btn btn-default" (click)="emailForm.reset()">Clear</button>
     </form>
   </div>
   <div [hidden]="!submitted">
-    <h2>Status: {{status}}</h2>
-    <div class="row">
-      <div class="col-xs-3">From: {{ model.from }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">To: {{ model.to }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">Subject: {{ model.subject }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">CC: {{ model.cc }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">BCC: {{ model.bcc }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">Text: {{ model.text }}</div>
-    </div>
-    <br>
-    <button class="btn btn-primary" (click)="submitted=false;emailForm.reset()">Send a new email</button>
+    <h2>Status: {{statusMsg}}</h2>
+    <dl>
+      <dt class="label"><label for="from">From</label></dt>
+      <dd class="item">{{model.from}}</dd>
+      <dt class="label"><label for="to">To</label></dt>
+      <dd class="item">{{model.to}}</dd>
+      <dt class="label"><label for="subject">Subject</label></dt>
+      <dd class="item">{{model.subject}}</dd>
+      <dt *ngIf="(model.bcc==='')" class="label"><label for="cc">cc</label></dt>
+      <dd *ngIf="(model.bcc==='')"  class="item">{{model.cc}}</dd>
+      <dt *ngIf="(model.bcc==='')"  class="label"><label for="bcc">bcc</label></dt>
+      <dd *ngIf="(model.bcc==='')"  class="item">{{model.bcc}}</dd>
+      <dt class="label"><label for="text">Body</label></dt>
+      <dd class="item">{{model.text}}</dd>
+      <dt class="label"></dt>
+      <dd class="item">&nbsp;</dd>
+      <dt class="label"></dt>
+      <dd class="item"><button class="btn btn-primary" (click)="submitted=false;emailForm.reset()">New email</button></dd>
+    </dl>
   </div>
 </div>

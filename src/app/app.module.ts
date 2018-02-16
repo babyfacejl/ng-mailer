@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { EmailFormComponent } from './components/email-form.component';
 import {HttpModule} from '@angular/http';
 import {EmailService} from './services/email.service';
+import {EmailsValidator} from './components/emails-validator.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmailFormComponent
+    EmailFormComponent,
+    EmailsValidator
   ],
   imports: [
     BrowserModule,
