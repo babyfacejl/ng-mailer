@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { Email } from '../models/email';
 import {EmailService} from '../services/email.service';
 
@@ -23,7 +22,7 @@ export class EmailFormComponent {
       res => {
         console.log(res);
         if (res.json().sendStatus == 'OK') {
-          this.statusMsg = "Mail sent successfully."
+          this.statusMsg = "Mail sent."
           this.submitted = true;
         }
         else {

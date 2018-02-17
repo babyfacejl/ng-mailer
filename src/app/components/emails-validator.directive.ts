@@ -9,11 +9,10 @@ import { NG_VALIDATORS,Validator,
   ]
 })
 export class EmailsValidator implements Validator {
-  // constructor( @Attribute('valid') public valid: string) {}
 
   validate(c: AbstractControl): { [key: string]: any } {
     let emails = c.value;
-    let allGood = true;
+
     if (emails) {
       for (let email of emails.split(",")) {
         console.log(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email));

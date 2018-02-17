@@ -5,6 +5,9 @@
 
 .container {
   width: 100%;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 13px;
+
 }
 dl {
   width: 100%;
@@ -26,5 +29,9 @@ dd.item {
 }
 div.form-group {
   width: 100%;
+}
+p.status {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 13px;
 }
 
