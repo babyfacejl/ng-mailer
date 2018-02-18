@@ -16,7 +16,7 @@ export class EmailsValidator implements Validator {
     if (emails) {
       for (let email of emails.split(",")) {
         console.log(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email));
-        if (email.trim() !== '' && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        if (email.trim() !== '' && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.trim())) {
           console.log("valid=false");
           return {'valid' : false};
         }

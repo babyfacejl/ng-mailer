@@ -29,9 +29,6 @@
               </div>
             </div>
           </dd>
-          <dt class="label"><label for="subject">Subject</label></dt>
-          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.subject" name="subject" required #subject="ngModel">
-            <div [hidden]="subject.valid || subject.pristine" class="alert alert-danger">Subject is required</div></dd>
           <dt class="label"><label for="cc">cc</label></dt>
           <dd class="item">
             <input type="text" size="50" class="form-control" [(ngModel)]="model.cc" name="cc" #cc="ngModel" emails="cc">
@@ -49,6 +46,9 @@
               </div>
             </div>
           </dd>
+          <dt class="label"><label for="subject">Subject</label></dt>
+          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.subject" name="subject" required #subject="ngModel">
+            <div [hidden]="subject.valid || subject.pristine" class="alert alert-danger">Subject is required</div></dd>
           <dt class="label"><label for="text">Body</label></dt>
           <dd class="item"><textarea rows="15" cols="91" type="text" size="100" class="form-control" [(ngModel)]="model.text" name="text" required #text="ngModel"></textarea>
             <div [hidden]="text.valid || text.pristine" class="alert alert-danger">Body is required</div></dd>
