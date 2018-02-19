@@ -26,7 +26,7 @@ export class EmailFormComponent {
           this.submitted = true;
         }
         else {
-          this.statusMsg = "Error sending mail. Please try again shortly."
+          this.statusMsg = res.json().body;
           this.submitted = false;
           this.btnClick = false;
         }
