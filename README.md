@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
+## Email form fields validation
+
+From: Required, only 1 email address allowed<br>
+To: Required, multiple email recipient comma separated<br>
+CC: Optional, multiple email recipient comma separated<br>
+Bcc: Optional, multiple email recipient comma separated<br>
+Subject: Required<br>
+Body: Required<br>
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
