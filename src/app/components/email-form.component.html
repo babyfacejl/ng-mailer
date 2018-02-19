@@ -8,7 +8,7 @@
         <dl>
           <dt class="label"><label for="from">From</label></dt>
           <dd class="item">
-            <input type="text" size="50" class="form-control" [(ngModel)]="model.from" name="from" required #from="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            <input id="from" type="text" size="50" class="form-control" [(ngModel)]="model.from" name="from" required #from="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
             <div [hidden]="from.valid || from.pristine" class="alert alert-danger">
               <div *ngIf="from.errors && from.errors.required">
                 From is required
@@ -19,7 +19,7 @@
             </div>
           </dd>
           <dt class="label"><label for="to">To</label></dt>
-          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.to" name="to" required #to="ngModel" emails>
+          <dd class="item"><input id="to" type="text" size="50" class="form-control" [(ngModel)]="model.to" name="to" required #to="ngModel" emails>
             <div [hidden]="to.valid || to.pristine || to.touched" class="alert alert-danger">
               <div *ngIf="to.errors && to.errors.required">
                 To is required
@@ -31,7 +31,7 @@
           </dd>
           <dt class="label"><label for="cc">cc</label></dt>
           <dd class="item">
-            <input type="text" size="50" class="form-control" [(ngModel)]="model.cc" name="cc" #cc="ngModel" emails="cc">
+            <input type="text" id="cc" size="50" class="form-control" [(ngModel)]="model.cc" name="cc" #cc="ngModel" emails="cc">
             <div [hidden]="cc.valid || cc.pristine|| cc.touched" class="alert alert-danger">
               <div *ngIf="!cc.valid">
                 Email is invalid
@@ -39,7 +39,7 @@
             </div>
           </dd>
           <dt class="label"><label for="bcc">bcc</label></dt>
-          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.bcc" name="bcc" #bcc="ngModel" emails="bcc">
+          <dd class="item"><input id="bcc" type="text" size="50" class="form-control" [(ngModel)]="model.bcc" name="bcc" #bcc="ngModel" emails="bcc">
             <div [hidden]="bcc.valid || bcc.pristine || bcc.touched" class="alert alert-danger">
               <div *ngIf="!bcc.valid">
                 Email is invalid
@@ -47,10 +47,10 @@
             </div>
           </dd>
           <dt class="label"><label for="subject">Subject</label></dt>
-          <dd class="item"><input type="text" size="50" class="form-control" [(ngModel)]="model.subject" name="subject" required #subject="ngModel">
+          <dd class="item"><input id="subject" type="text" size="50" class="form-control" [(ngModel)]="model.subject" name="subject" required #subject="ngModel">
             <div [hidden]="subject.valid || subject.pristine" class="alert alert-danger">Subject is required</div></dd>
           <dt class="label"><label for="text">Body</label></dt>
-          <dd class="item"><textarea rows="15" cols="91" type="text" size="100" class="form-control" [(ngModel)]="model.text" name="text" required #text="ngModel"></textarea>
+          <dd class="item"><textarea id="text" rows="15" cols="91" type="text" size="100" class="form-control" [(ngModel)]="model.text" name="text" required #text="ngModel"></textarea>
             <div [hidden]="text.valid || text.pristine" class="alert alert-danger">Body is required</div></dd>
           <dt class="label"></dt>
           <dd class="item"><button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid || btnClick">Send</button>&nbsp;&nbsp;&nbsp;&nbsp;

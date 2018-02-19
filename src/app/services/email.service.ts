@@ -9,9 +9,6 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class EmailService {
 
-  // headers = new Headers({ 'Content-Type': 'application/json' });
-  // options = new RequestOptions({ headers: this.headers });
-
   constructor(private http: Http) {
   }
 
